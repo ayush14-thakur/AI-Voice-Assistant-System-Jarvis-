@@ -8,7 +8,7 @@ from gtts import gTTS
 import pygame
 import os
 
-# pip install pocketsphinx
+
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init() 
@@ -22,16 +22,16 @@ def speak(text):
     tts = gTTS(text)
     tts.save('temp.mp3') 
 
-    # Initialize Pygame mixer
+    
     pygame.mixer.init()
 
-    # Load the MP3 file
+   
     pygame.mixer.music.load('temp.mp3')
 
-    # Play the MP3 file
+    
     pygame.mixer.music.play()
 
-    # Keep the program running until the music stops playing
+    
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
     
@@ -69,18 +69,18 @@ def processCommand(c):
     elif "news" in c.lower():
         r = requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey={newsapi}")
         if r.status_code == 200:
-            # Parse the JSON response
+            
             data = r.json()
             
-            # Extract the articles
+            
             articles = data.get('articles', [])
             
-            # Print the headlines
+            
             for article in articles:
                 speak(article['title'])
 
     else:
-        # Let OpenAI handle the request
+        
         output = aiProcess(c)
         speak(output) 
 
@@ -113,4 +113,5 @@ if __name__ == "__main__":
 
 
         except Exception as e:
+
             print("Error; {0}".format(e))
