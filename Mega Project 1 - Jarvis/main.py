@@ -12,7 +12,7 @@ import os
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init() 
-newsapi = "12255494cd44462bb748f61e627ed980"
+newsapi = "Enter Your KEY"
 
 def speak_old(text):
     engine.say(text)
@@ -112,4 +112,5 @@ if __name__ == "__main__":
 
 
         except Exception as e:
+
             print("Error; {0}".format(e))
